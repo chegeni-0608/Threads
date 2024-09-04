@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
 
 namespace Threads
@@ -25,13 +26,13 @@ namespace Threads
             //    Thread.Sleep(2);
             //    lblCounterA.Text = i.ToString();
             //}
-            var thread = new Thread(() => { StartCounter(lblCounterA, 5000); });
+            var thread = new Thread(() => { StartCounter(lblCounterA, 5000, 2); });
             thread.Start();
         }
 
         //private void StartCounterA()
         //{
-        //    for (int i = 0; i < 4000; i++)
+        //    for (int i = 0; i < 4000; i++),,
         //    {
         //        Thread.Sleep(20);
         //        Invoke(new MethodInvoker(delegate ()
@@ -61,9 +62,39 @@ namespace Threads
             //}
             //var thread = new Thread(() => { StartCounterB(); });
             //thread.Start();
-            var thread = new Thread(() => { StartCounter(lblCounterB, 7000, 5); });
+            var thread = new Thread(() => { StartCounter(lblCounterB, 7000, 1); });
             thread.Start();
         }
+
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            var thread = new Thread(() => { UpdateTime(); });
+            thread.Start();
+        }
+
+        private void UpdateTime()
+        {
+            var timer = new System.Timers.Timer();
+            timer.Interval = 1000; // 1s = 1000ms
+            timer.Elapsed += Timer_Elapsed;
+            timer.Start();
+        }
+
+        private void Timer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            Invoke(new MethodInvoker(delegate ()
+            {
+                lblTime.Text = DateTime.Now.ToLongTimeString();
+            }));
+        }
+
+        private void ChangeBGColor_Click(object sender, EventArgs e)
+        {
+         this.BackColor = Color.FromName(textColorName.Text);
+        }
+
+
         //private void StartCounterB()
         //{
         //    for (int i = 0; i < 4000; i++)

@@ -39,6 +39,7 @@
             this.ChangeBGColor = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.textColorName = new System.Windows.Forms.TextBox();
+            this.btnSampleCuncurrencyBottleneck = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnStartCounterA
@@ -141,11 +142,22 @@
             this.textColorName.Size = new System.Drawing.Size(100, 20);
             this.textColorName.TabIndex = 10;
             // 
+            // btnSampleCuncurrencyBottleneck
+            // 
+            this.btnSampleCuncurrencyBottleneck.Location = new System.Drawing.Point(12, 145);
+            this.btnSampleCuncurrencyBottleneck.Name = "btnSampleCuncurrencyBottleneck";
+            this.btnSampleCuncurrencyBottleneck.Size = new System.Drawing.Size(179, 23);
+            this.btnSampleCuncurrencyBottleneck.TabIndex = 11;
+            this.btnSampleCuncurrencyBottleneck.Text = "Sample Cuncurrency - Bottleneck";
+            this.btnSampleCuncurrencyBottleneck.UseVisualStyleBackColor = true;
+            this.btnSampleCuncurrencyBottleneck.Click += new System.EventHandler(this.btnSampleCuncurrencyBottleneck_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(442, 290);
+            this.Controls.Add(this.btnSampleCuncurrencyBottleneck);
             this.Controls.Add(this.textColorName);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.ChangeBGColor);
@@ -178,6 +190,7 @@
         private System.Windows.Forms.Button ChangeBGColor;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textColorName;
+        private System.Windows.Forms.Button btnSampleCuncurrencyBottleneck;
     }
 }
 

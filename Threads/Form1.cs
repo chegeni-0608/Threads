@@ -94,6 +94,13 @@ namespace Threads
          this.BackColor = Color.FromName(textColorName.Text);
         }
 
+        private void btnSampleCuncurrencyBottleneck_Click(object sender, EventArgs e)
+        {
+            var form = new frmCuncurrency();
+            form.ShowDialog();
+
+        }
+
 
         //private void StartCounterB()
         //{

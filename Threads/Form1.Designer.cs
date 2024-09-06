@@ -43,6 +43,7 @@
             this.btnAsyncAwait = new System.Windows.Forms.Button();
             this.btnWithTransaction = new System.Windows.Forms.Button();
             this.btnWithoutTransaction = new System.Windows.Forms.Button();
+            this.btnWorkWithRSA = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnStartCounterA
@@ -185,11 +186,22 @@
             this.btnWithoutTransaction.UseVisualStyleBackColor = true;
             this.btnWithoutTransaction.Click += new System.EventHandler(this.btnWithoutTransaction_Click);
             // 
+            // btnWorkWithRSA
+            // 
+            this.btnWorkWithRSA.Location = new System.Drawing.Point(213, 145);
+            this.btnWorkWithRSA.Name = "btnWorkWithRSA";
+            this.btnWorkWithRSA.Size = new System.Drawing.Size(130, 23);
+            this.btnWorkWithRSA.TabIndex = 15;
+            this.btnWorkWithRSA.Text = "Work With RSA";
+            this.btnWorkWithRSA.UseVisualStyleBackColor = true;
+            this.btnWorkWithRSA.Click += new System.EventHandler(this.btnWorkWithRSA_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(442, 290);
+            this.Controls.Add(this.btnWorkWithRSA);
             this.Controls.Add(this.btnWithoutTransaction);
             this.Controls.Add(this.btnWithTransaction);
             this.Controls.Add(this.btnAsyncAwait);
@@ -230,6 +242,7 @@
         private System.Windows.Forms.Button btnAsyncAwait;
         private System.Windows.Forms.Button btnWithTransaction;
         private System.Windows.Forms.Button btnWithoutTransaction;
+        private System.Windows.Forms.Button btnWorkWithRSA;
     }
 }
 

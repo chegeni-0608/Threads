@@ -181,6 +181,12 @@ namespace Threads
             }
         }
 
+        private void btnWorkWithRSA_Click(object sender, EventArgs e)
+        {
+            var form = new frmRSA();
+            form.ShowDialog();
+        }
+
 
         //private void StartCounterB()
         //{

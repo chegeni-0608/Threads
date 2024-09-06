@@ -40,6 +40,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.textColorName = new System.Windows.Forms.TextBox();
             this.btnSampleCuncurrencyBottleneck = new System.Windows.Forms.Button();
+            this.btnAsyncAwait = new System.Windows.Forms.Button();
+            this.btnWithTransaction = new System.Windows.Forms.Button();
+            this.btnWithoutTransaction = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnStartCounterA
@@ -152,11 +155,44 @@
             this.btnSampleCuncurrencyBottleneck.UseVisualStyleBackColor = true;
             this.btnSampleCuncurrencyBottleneck.Click += new System.EventHandler(this.btnSampleCuncurrencyBottleneck_Click);
             // 
+            // btnAsyncAwait
+            // 
+            this.btnAsyncAwait.Location = new System.Drawing.Point(12, 174);
+            this.btnAsyncAwait.Name = "btnAsyncAwait";
+            this.btnAsyncAwait.Size = new System.Drawing.Size(179, 23);
+            this.btnAsyncAwait.TabIndex = 12;
+            this.btnAsyncAwait.Text = "Async-Await Sample";
+            this.btnAsyncAwait.UseVisualStyleBackColor = true;
+            this.btnAsyncAwait.Click += new System.EventHandler(this.btnAsyncAwait_Click);
+            // 
+            // btnWithTransaction
+            // 
+            this.btnWithTransaction.Location = new System.Drawing.Point(12, 224);
+            this.btnWithTransaction.Name = "btnWithTransaction";
+            this.btnWithTransaction.Size = new System.Drawing.Size(179, 23);
+            this.btnWithTransaction.TabIndex = 13;
+            this.btnWithTransaction.Text = "With Transaction";
+            this.btnWithTransaction.UseVisualStyleBackColor = true;
+            this.btnWithTransaction.Click += new System.EventHandler(this.btnWithTransaction_Click);
+            // 
+            // btnWithoutTransaction
+            // 
+            this.btnWithoutTransaction.Location = new System.Drawing.Point(12, 255);
+            this.btnWithoutTransaction.Name = "btnWithoutTransaction";
+            this.btnWithoutTransaction.Size = new System.Drawing.Size(179, 23);
+            this.btnWithoutTransaction.TabIndex = 14;
+            this.btnWithoutTransaction.Text = "Without Transaction";
+            this.btnWithoutTransaction.UseVisualStyleBackColor = true;
+            this.btnWithoutTransaction.Click += new System.EventHandler(this.btnWithoutTransaction_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(442, 290);
+            this.Controls.Add(this.btnWithoutTransaction);
+            this.Controls.Add(this.btnWithTransaction);
+            this.Controls.Add(this.btnAsyncAwait);
             this.Controls.Add(this.btnSampleCuncurrencyBottleneck);
             this.Controls.Add(this.textColorName);
             this.Controls.Add(this.label4);
@@ -191,6 +227,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textColorName;
         private System.Windows.Forms.Button btnSampleCuncurrencyBottleneck;
+        private System.Windows.Forms.Button btnAsyncAwait;
+        private System.Windows.Forms.Button btnWithTransaction;
+        private System.Windows.Forms.Button btnWithoutTransaction;
     }
 }
 

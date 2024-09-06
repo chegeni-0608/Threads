@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
+using System.Transactions;
 using System.Windows.Forms;
+using Threads.Models;
 
 namespace Threads
 {
@@ -99,6 +102,83 @@ namespace Threads
             var form = new frmCuncurrency();
             form.ShowDialog();
 
+        }
+
+        private async void btnAsyncAwait_Click(object sender, EventArgs e)
+        {
+            var category = new Category
+
+            {
+                CategoryName = "ert",
+                Description = "test123"
+            };
+
+            AddCategoryAsync(category);
+            MessageBox.Show("Add Category suc....");
+
+            var categories = GetCategoriesAsync();
+            MessageBox.Show(categories.Result.Count.ToString());
+
+            var categories2 = await GetCategoriesAsync();
+            MessageBox.Show(categories2.Count.ToString());
+        }
+
+        public async void AddCategoryAsync(Category model)
+        {
+            using (var db = new CsharpSampleDBEntities())
+            {
+             db.Categories.Add(model);
+                //db.SaveChanges();
+                await db.SaveChangesAsync();
+            }
+        }
+
+        public async Task<List<Category>> GetCategoriesAsync()
+        {
+            using (var db = new CsharpSampleDBEntities())
+            {
+                var result = db.Categories.OrderBy(c => c.CategoryName);
+                return await result.ToListAsync();
+
+            }
+        }
+
+        private void btnWithoutTransaction_Click(object sender, EventArgs e)
+        {
+            var category1 = new Category { CategoryName = "transaction", Description = "abc1" };
+            var category2 = new Category { CategoryName = "fdfgdgfdgfdgfdgfdgfdgfdgfdgfdddfgfdgfdgfdgfdrdytydgfdtdctrdt, Descripti", Description = "abc2" };
+
+            var db1 = new CsharpSampleDBEntities();
+            db1.Categories.Add(category1);
+            db1.SaveChanges();
+
+            var db2 = new CsharpSampleDBEntities();
+            db2.Categories.Add(category2);
+            db2.SaveChanges();
+        }
+
+
+        private void btnWithTransaction_Click(object sender, EventArgs e)
+        {
+            using (TransactionScope transaction = new TransactionScope())
+            {
+                var category1 = new Category { CategoryName = "transactionScopeSample", Description = "abc1" };
+                // تعداد کاراکترها زیاد است گس transaction نمیگذارد هیچ دستوری اجرا شود
+                // var category2 = new Category { CategoryName = "fdfgdgfdgfdgfdgfdgfdgfdgfdgfdddfgfdgfdgfdgfdrdytydgfdtdctrdt, Descripti", Description = "abc2" };
+
+                //تعداد کاراکترها ورودی با جدول درست است گس transaction  دستور اجرا شود
+                var category2 = new Category { CategoryName = " Description nnnn", Description = "abc2" };
+
+                var db1 = new CsharpSampleDBEntities();
+                db1.Categories.Add(category1);
+                db1.SaveChanges();
+
+                var db2 = new CsharpSampleDBEntities();
+                db2.Categories.Add(category2);
+                db2.SaveChanges();
+
+                Transaction.ReferenceEquals(db1, db2);
+            }
         }
 
 
